@@ -102,6 +102,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-### 0.1.0 (2015-06-01)
+### 0.1.1 (2015-06-01)
 
 * Initial Release
