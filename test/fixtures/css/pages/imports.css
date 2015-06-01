@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+@import "imgTest.css";
+@import "../imgTest.css";
+@import "../module/imgTest.css";
+@import "../module/foo/imgTest.css";
+@import "../module/test.css";
+
+.demoC{background:url(../../images/c.png) no-repeat;}

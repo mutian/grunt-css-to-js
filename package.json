@@ -1,0 +1,43 @@
+{
+  "name": "grunt-css-to-js",
+  "description": "Convert CSS file to JS file",
+  "version": "0.1.0",
+  "homepage": "git://github.com/mutian/grunt-css-to-js.git",
+  "author": "Mutian Wang <mutian@me.com> (http://mutian.wang)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mutian/grunt-css-to-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mutian/grunt-css-to-js/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "git://github.com/mutian/grunt-css-to-js.git/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.2"
+  },
+  "peerDependencies": {
+    "grunt": ">=0.4.0"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "license": "ISC"
+}
