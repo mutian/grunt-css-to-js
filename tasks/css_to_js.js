@@ -26,7 +26,7 @@ module.exports = function(grunt) {
     var options = this.options({
       charset: '@charset "UTF-8";',
       baseUrl: '/',       // base url
-      baseDir: '.',        // local base dir
+      baseDir: '.',       // local base dir
       regFn: 'jcssReg'    // js register function
     });
     
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       var gruntRelDir = path.dirname(gruntRelPath);
       var fileContent = grunt.file.read(gruntRelPath);
 
-      // 去注释
+      // remove comments
       fileContent = fileContent.replace(/\/\*[\s\S]*?\*\//g, '');
 
       // import
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
         return combine(gruntRelImportPath);
       });
 
-      // url处理（不处理绝对路径）
+      // relative url to absolute
       fileContent = fileContent.replace(/url\(\s*(['"]?)([^\/][\w\-\.\/\?=]+)\1\s*\)/ig, function(matchString, quote, relUrl) {
         var gruntRelUrl = path.join(gruntRelDir, relUrl).replace(/\\/g, '/');
         var baseRelUrl = path.relative(options.baseDir, getVersionedUrl(gruntRelUrl)).replace(/\\/g, '/');
