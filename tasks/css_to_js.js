@@ -46,14 +46,14 @@ module.exports = function(grunt) {
       fileContent = fileContent.replace(/\/\*[\s\S]*?\*\//g, '');
 
       // import
-      fileContent = fileContent.replace(/\s*@import\s*?(?: url\(\s*)?(['"])?([^\/][\w\-\.\/\?=]+)\1\s*\)?\s*;/ig, function(matchString, quote, importRelPath) {
+      fileContent = fileContent.replace(/\s*@import\s*?(?: url\(\s*)?(['"])?((?!\/)[\w\-\.\/\?=]+)\1\s*\)?\s*;/ig, function(matchString, quote, importRelPath) {
         var gruntRelImportPath = path.join(gruntRelDir, importRelPath).replace(/\\/g, '/');
         console.log('\t@import: ' + gruntRelImportPath);
         return combine(gruntRelImportPath);
       });
 
       // relative url to absolute
-      fileContent = fileContent.replace(/url\(\s*(['"]?)([^\/][\w\-\.\/\?=]+)\1\s*\)/ig, function(matchString, quote, relUrl) {
+      fileContent = fileContent.replace(/url\(\s*(['"]?)((?!\/)[\w\-\.\/\?=]+)\1\s*\)/ig, function(matchString, quote, relUrl) {
         var gruntRelUrl = path.join(gruntRelDir, relUrl).replace(/\\/g, '/');
         var baseRelUrl = path.relative(options.baseDir, getVersionedUrl(gruntRelUrl)).replace(/\\/g, '/');
         var absUrl = options.baseUrl + baseRelUrl;
@@ -104,8 +104,8 @@ module.exports = function(grunt) {
 
     var css2js = function(cssContent, filePath) {
       var code = cssContent.replace(/\'/g, "\\'");
-      var ns = filePath.replace(/^(.*)\.css$/i, '$1');
-      return options.regFn + "('" + ns + "', '" + code + "');";
+      var path = filePath.replace(/^(.*)\.css$/i, '$1');
+      return options.regFn + "('" + path + "', '" + code + "');";
     };
 
     this.files.forEach(function(fileGroup) {

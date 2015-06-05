@@ -1,7 +1,3 @@
-# css-to-js
-
-> Convert CSS file to JS file.
-
 ## Getting Started
 This plugin requires Grunt `>=0.4.0`
 
@@ -16,6 +12,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 ```js
 grunt.loadNpmTasks('css-to-js');
 ```
+
 
 ## The "css_to_js" task
 
@@ -35,6 +32,7 @@ grunt.initConfig({
 });
 ```
 
+
 ### Options
 
 #### options.baseUrl
@@ -53,20 +51,21 @@ A string value that is used to set the local directory of `options.baseUrl`.
 Type: `String`
 Default value: `'jcssReg'`
 
-A string value that is used to set the register function of js.
+A string value that is used to set the name of JavaScript register function.
 
 ### Usage Examples
 
 #### Single File
-In this example, `src/css/foo.css` will be converted to `dist/jcss/foo.js`, the relative urls in `src/css/foo.css` will be converted to absolute url which start with `options.baseUrl`.
+In this example, `src/css/foo.css` will be converted to `dist/jcss/foo.js`. In the process, the relative urls in url() functions will be converted to absolute urls which start with `options.baseUrl`, then output a JavaScript function `jcssReg('css/foo', 'Some css code...')`.
 
+Gruntfile.js
 ```js
 grunt.initConfig({
   css_to_js: {
     options: {
       baseUrl: 'http://cdn.domain.com/abc/',
       baseDir: 'src/',
-      regFn: 'namespace.jcssReg'
+      regFn: 'jcssReg'
     },
     images: {
       files: {
@@ -75,6 +74,19 @@ grunt.initConfig({
     }
   },
 });
+```
+
+src: `src/css/foo.css`
+```css
+@charset "utf-8";
+/* Icon */
+.demoA{background:url(../images/a.png) no-repeat;}
+.demoB{background:url(img/b.png) no-repeat;}
+```
+
+output: `dist/jcss/foo.js`
+```
+jcssReg('css/foo', '@charset "UTF-8";.demoA{background:url(http://cdn.domain.com/abc/images/a.png?v=tb3H6AEo) no-repeat}.demoB{background:url(http://cdn.domain.com/abc/css/img/b.png?v=4rdNjIPK) no-repeat}');
 ```
 
 #### Specify Directory
@@ -86,7 +98,7 @@ grunt.initConfig({
     options: {
       baseUrl: 'http://cdn.domain.com/abc/',
       baseDir: 'src/',
-      regFn: 'namespace.jcssReg'
+      regFn: 'jcssReg'
     },
     files: [{
       cwd: 'src/css',
@@ -97,11 +109,17 @@ grunt.initConfig({
 });
 ```
 
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+
 
 ## Release History
 
 ### 0.1.1 (2015-06-01)
 
 * Initial Release
+
+### 0.1.2 (2015-06-05)
+
+* Optimize the regular expression of relative url
