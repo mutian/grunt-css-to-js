@@ -80,8 +80,8 @@ src: `src/css/foo.css`
 ```css
 @charset "utf-8";
 /* Icon */
-.demoA{background:url(../images/a.png) no-repeat;}
-.demoB{background:url(img/b.png) no-repeat;}
+.demoA { background: url(../images/a.png) no-repeat; }
+.demoB { background: url(img/b.png) no-repeat; }
 ```
 
 output: `dist/jcss/foo.js`
