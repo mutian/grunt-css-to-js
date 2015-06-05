@@ -85,7 +85,7 @@ src: `src/css/foo.css`
 ```
 
 output: `dist/jcss/foo.js`
-```
+```js
 jcssReg('css/foo', '@charset "UTF-8";.demoA{background:url(http://cdn.domain.com/abc/images/a.png?v=tb3H6AEo) no-repeat}.demoB{background:url(http://cdn.domain.com/abc/css/img/b.png?v=4rdNjIPK) no-repeat}');
 ```
 
