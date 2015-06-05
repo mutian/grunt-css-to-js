@@ -24,7 +24,7 @@ var b64Map = [
 module.exports = function(grunt) {
   grunt.registerMultiTask('css_to_js', 'Convert CSS to JS', function() {
     var options = this.options({
-      charset: '@charset "UTF-8";',
+      charset: '@charset "utf-8";',
       baseUrl: '/',       // base url
       baseDir: '.',       // local base dir
       regFn: 'jcssReg'    // js register function
