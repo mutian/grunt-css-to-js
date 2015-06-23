@@ -42,6 +42,9 @@ module.exports = function(grunt) {
       var gruntRelDir = path.dirname(gruntRelPath);
       var fileContent = grunt.file.read(gruntRelPath);
 
+      // remove BOM
+      fileContent = fileContent.replace(/^\xef\xbb\xbf/, '');
+
       // remove comments
       fileContent = fileContent.replace(/\/\*[\s\S]*?\*\//g, '');
 
