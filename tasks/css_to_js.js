@@ -94,7 +94,7 @@ module.exports = function(grunt) {
         }
         return ver.join('');
       } catch (e) {
-        console.error('\tFile not exist: ' + filePath);
+        console.warn('\t[Warn] File not exist: ' + filePath);
         return '0';
       }
     };
