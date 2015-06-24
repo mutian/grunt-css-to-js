@@ -52,7 +52,7 @@ module.exports = function(grunt) {
       fileContent = fileContent.replace(/@charset[^;]+;\s*/ig, '');
 
       // import
-      fileContent = fileContent.replace(/\s*@import\s*?(?: url\(\s*)?(['"])?((?!\/)[\w\-\.\/\?=]+)\1\s*\)?\s*;/ig, function(matchString, quote, importRelPath) {
+      fileContent = fileContent.replace(/\s*@import\s*?(?: url\(\s*)?(['"])?((?!\/)[\w\-\.\/\?=]+)\1\s*\)?\s*;?/ig, function(matchString, quote, importRelPath) {
         var gruntRelImportPath = path.join(gruntRelDir, importRelPath).replace(/\\/g, '/');
         console.log('\t@import: ' + gruntRelImportPath);
         return combine(gruntRelImportPath);
