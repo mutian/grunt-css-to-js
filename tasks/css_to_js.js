@@ -30,13 +30,13 @@ module.exports = function(grunt) {
       regFn: 'jcssReg'    // js register function
     });
     
-    var combineCache = {};
-    var fileVers = {};
+    var combinedMap = {};
+    var fileVersMap = {};
 
     var combine = function(gruntRelPath) {
-      if (combineCache[gruntRelPath]) {
-        // console.log('\t▲ return from combineCache');
-        return combineCache[gruntRelPath];
+      if (combinedMap[gruntRelPath]) {
+        // console.log('\t▲ return from combinedMap');
+        return combinedMap[gruntRelPath];
       }
 
       var gruntRelDir = path.dirname(gruntRelPath);
@@ -47,6 +47,9 @@ module.exports = function(grunt) {
 
       // remove comments
       fileContent = fileContent.replace(/\/\*[\s\S]*?\*\//g, '');
+
+      // remove @charset
+      fileContent = fileContent.replace(/@charset[^;]+;\s*/ig, '');
 
       // import
       fileContent = fileContent.replace(/\s*@import\s*?(?: url\(\s*)?(['"])?((?!\/)[\w\-\.\/\?=]+)\1\s*\)?\s*;/ig, function(matchString, quote, importRelPath) {
@@ -63,15 +66,15 @@ module.exports = function(grunt) {
         return matchString.replace(relUrl, absUrl);
       });
 
-      combineCache[gruntRelPath] = fileContent;
+      combinedMap[gruntRelPath] = fileContent;
       return fileContent;
     };
 
     var getVersionedUrl = function(filePath) {
-      var ver = fileVers[filePath];
+      var ver = fileVersMap[filePath];
       if (typeof ver === 'undefined') {
         ver = getFileVersion(filePath.replace(/(\.[A-Za-z0-9]+)(\?[\w\-=]+)?$/, '$1'));
-        fileVers[filePath] = ver;
+        fileVersMap[filePath] = ver;
       }
       return filePath.replace(/(\.[A-Za-z0-9]+)(\?[\w\-=]+)?$/, '$1?v=' + ver);
     };
@@ -99,7 +102,6 @@ module.exports = function(grunt) {
     var compress = function(fileContent) {
       return options.charset + fileContent.replace(/\s*([\{\}:;,])\s*/g, '$1')
         .replace(/\s+!important/ig, '!important')
-        .replace(/@charset[^;]+;/ig, '')
         .replace(/;\}/g, '}')
         .replace(/\n+/g, '')
         .replace(/^\s*(\S+(\s+\S+)*)\s*$/, '$1');
