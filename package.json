@@ -1,7 +1,7 @@
 {
   "name": "grunt-css-to-js",
   "description": "Convert CSS file to JS file",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "git://github.com/mutian/grunt-css-to-js.git",
   "author": "Mutian Wang <mutian@me.com> (http://mutian.wang)",
   "repository": {
