@@ -1,4 +1,3 @@
 @charset "utf-8";
-
-.demoA{background:url(../images/a.png) no-repeat;}
-.demoQ{background:url(img/q.png) no-repeat;}
+.demoA { background: url("../images/a.png?version=123") no-repeat; }
+.demoQ { background: url(img/q.png) no-repeat; }

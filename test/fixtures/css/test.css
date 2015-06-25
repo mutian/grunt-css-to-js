@@ -1,12 +1,12 @@
-.wrap{
-	margin:20px;
+.wrap {
+	margin: 20px;
 	padding: 20px;
 	border: 10px solid #fee;
 	background: #ffe;
 }
-.wrap em{
-	color:#f9c;
+.wrap em {
+	color: #f9c;
 }
-.wrap strong{
-	color:#f9c;
+.wrap strong {
+	color: #f9c;
 }

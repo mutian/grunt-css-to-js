@@ -71,12 +71,13 @@ module.exports = function(grunt) {
     };
 
     var getVersionedUrl = function(filePath) {
+      var pathReg = /(\.[A-Za-z0-9]+)(\?[\w\-=]*)?$/;
       var ver = fileVersMap[filePath];
       if (typeof ver === 'undefined') {
-        ver = getFileVersion(filePath.replace(/(\.[A-Za-z0-9]+)(\?[\w\-=]+)?$/, '$1'));
+        ver = getFileVersion(filePath.replace(pathReg, '$1'));
         fileVersMap[filePath] = ver;
       }
-      return filePath.replace(/(\.[A-Za-z0-9]+)(\?[\w\-=]+)?$/, '$1?v=' + ver);
+      return filePath.replace(pathReg, '$1?v=' + ver);
     };
 
     var getFileVersion = function(filePath) {

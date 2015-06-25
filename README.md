@@ -80,13 +80,13 @@ src: `src/css/foo.css`
 ```css
 @charset "utf-8";
 /* Icon */
-.demoA { background: url(../images/a.png) no-repeat; }
-.demoB { background: url(img/b.png) no-repeat; }
+.demoA { background: url("../images/a.png?version=123") no-repeat; }
+.demoQ { background: url(img/q.png) no-repeat; }
 ```
 
 output: `dist/jcss/foo.js`
 ```js
-jcssReg('css/foo', '@charset "UTF-8";.demoA{background:url(http://cdn.domain.com/abc/images/a.png?v=tb3H6AEo) no-repeat}.demoB{background:url(http://cdn.domain.com/abc/css/img/b.png?v=4rdNjIPK) no-repeat}');
+jcssReg('css/foo', '@charset "UTF-8";.demoA{background:url("http://cdn.domain.com/abc/images/a.png?v=tb3H6AEo") no-repeat}.demoB{background:url(http://cdn.domain.com/abc/css/img/b.png?v=4rdNjIPK) no-repeat}');
 ```
 
 #### Specify Directory
@@ -123,3 +123,19 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ### 0.1.2 (2015-06-05)
 
 * Optimize the regular expression of relative url
+
+### 0.1.5 (2015-06-23)
+
+* Remove BOM
+
+### 0.1.6 (2015-06-25)
+
+* Optimize the regular for @charset
+
+### 0.1.7 (2015-06-25)
+
+* Optimize the regular expression of import file path
+
+### 0.1.8 (2015-06-25)
+
+* Optimize the regular expression of url() file path
