@@ -1,1 +1,1 @@
-namespace.jcssReg('test/fixtures/css/imgTest', '@charset "utf-8";.demoA{background:url("http://cdn.domain.com/abc/images/a.png?v=tb3H6AEo") no-repeat}.demoQ{background:url(http://cdn.domain.com/abc/css/img/q.png?v=4rdNjIPK) no-repeat}');
+namespace.jcssReg('test/fixtures/css/imgTest', '@charset "utf-8";.demoA{background:url("http://cdn.domain.com/abc/images/a.png?v=nhbQo6l0") no-repeat}.demoQ{background:url(http://cdn.domain.com/abc/css/img/q.png?v=hjByEVut) no-repeat}');
