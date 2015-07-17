@@ -59,7 +59,7 @@ module.exports = function(grunt) {
         fileContent = fileContent.replace(/;\}/g, '}');
 
         // Remove redundant space
-        fileContent = fileContent.replace(/ {2,}/g, ' ');
+        fileContent = fileContent.replace(/\s{2,}/g, ' ');
 
         // Trim
         fileContent = fileContent.replace(/^\s*(\S+(\s+\S+)*)\s*$/, '$1');
